@@ -36,7 +36,7 @@ The conversation always starts with the Fonio call. Behind it, four n8n workflow
 | ----- | -------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | 1a    | **Street Matcher (Phonetic, embedded data)** | Webhook, called by Fonio for the **pickup**                | Turns the noisy pickup transcription into the most likely real Austrian street.                   |
 | 1b    | **Street Matcher (Phonetic, embedded data)** | Same webhook, called again for the **destination**         | Does the same for the destination. Runs before any other workflow sees an address.                |
-| 2     | **Fonio – Call ended (pick transcript)**     | Webhook, called by Fonio once both addresses are confirmed | Takes the matched pickup and destination, converts them to coordinates and requests ride options. |
+| 2     | **Fonio – Searching available rides**        | Webhook, called by Fonio once both addresses are confirmed | Takes the matched pickup and destination, converts them to coordinates and requests ride options. |
 | 2a    | **Mobie API – Authenticated Ride Search**    | Sub-workflow of (2)                                        | Authenticates against Mobie and returns a short list of rides.                                    |
 | 3     | **Booking**                                  | Webhook, called by Fonio                                   | Sends the booking request for the ride the caller picked. Runs last.                              |
 
